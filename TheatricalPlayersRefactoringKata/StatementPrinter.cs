@@ -21,7 +21,7 @@ namespace TheatricalPlayersRefactoringKata
                 // add volume credits
                 
                 // add extra credit for every ten comedy attendees
-                if ("comedy" == play.Type)
+                if ("comedy" == perf.Play.Type)
                 {
                     volumeCredits += CalculateVolumeCreditsIfComedy(perf);
                 }
@@ -31,7 +31,7 @@ namespace TheatricalPlayersRefactoringKata
                 }
 
                 // print line for this order
-                result += FormatOrder(cultureInfo, play, thisAmount, perf);
+                result += FormatOrder(cultureInfo, thisAmount, perf);
                 
                 totalAmount += thisAmount;
             }
@@ -79,9 +79,9 @@ namespace TheatricalPlayersRefactoringKata
             return String.Format(cultureInfo, "Amount owed is {0:C}\n", Convert.ToDecimal(totalAmount / 100));
         }
 
-        private static string FormatOrder(CultureInfo cultureInfo, Play play, int thisAmount, Performance perf)
+        private static string FormatOrder(CultureInfo cultureInfo, int thisAmount, Performance perf)
         {
-            return String.Format(cultureInfo, "  {0}: {1:C} ({2} seats)\n", play.Name, Convert.ToDecimal(thisAmount / 100), perf.Audience);
+            return String.Format(cultureInfo, "  {0}: {1:C} ({2} seats)\n", perf.Play.Name, Convert.ToDecimal(thisAmount / 100), perf.Audience);
         }
 
         private static int CalculateThisAmountForComedy(Performance perf)
