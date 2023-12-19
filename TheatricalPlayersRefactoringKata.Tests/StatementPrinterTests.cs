@@ -9,7 +9,6 @@ namespace TheatricalPlayersRefactoringKata.Tests
         [Test]
         public void test_statement_example()
         {
-            var plays = new Dictionary<string, Play>();
             var hamlet = new Play("Hamlet", "tragedy");
             var asyoulikeit = new Play("As You Like It", "comedy");
             var othello = new Play("Othello", "tragedy");
@@ -35,13 +34,9 @@ namespace TheatricalPlayersRefactoringKata.Tests
         [Test]
         public void test_statement_with_new_play_types()
         {
-            var plays = new Dictionary<string, Play>();
             var henryv = new Play("Henry V", "history");
             var asyoulikeit = new Play("As You Like It", "pastoral");
             
-            plays.Add("henry-v", henryv);
-            plays.Add("as-like", asyoulikeit);
-
             Invoice invoice = new Invoice("BigCoII", new List<Performance>{new Performance(henryv, 53),
                 new Performance(asyoulikeit, 55)});
             
