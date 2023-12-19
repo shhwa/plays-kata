@@ -39,8 +39,13 @@ namespace TheatricalPlayersRefactoringKata
                 totalAmount += thisAmount;
             }
             result += FormatAmountOwed(cultureInfo, totalAmount);
-            result += String.Format("You earned {0} credits\n", volumeCredits);
+            result += FormatCreditsEarned(volumeCredits);
             return result;
+        }
+
+        private static string FormatCreditsEarned(int volumeCredits)
+        {
+            return String.Format("You earned {0} credits\n", volumeCredits);
         }
 
         private static string FormatAmountOwed(CultureInfo cultureInfo, int totalAmount)
