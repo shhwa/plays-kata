@@ -14,16 +14,12 @@ namespace TheatricalPlayersRefactoringKata.Tests
             var asyoulikeit = new Play("As You Like It", "comedy");
             var othello = new Play("Othello", "tragedy");
             
-            plays.Add("hamlet", hamlet);
-            plays.Add("as-like", asyoulikeit);
-            plays.Add("othello", othello);
-
             Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance(hamlet, 55),
                 new Performance(asyoulikeit, 35),
                 new Performance(othello, 40)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
-            var result = statementPrinter.Print(invoice, plays);
+            var result = statementPrinter.Print(invoice);
 
             string expectedResult = "Statement for BigCo"
                                     + "\n  Hamlet: $650.00 (55 seats)"
@@ -51,7 +47,7 @@ namespace TheatricalPlayersRefactoringKata.Tests
             
             StatementPrinter statementPrinter = new StatementPrinter();
 
-            Assert.Throws<Exception>(() => statementPrinter.Print(invoice, plays));
+            Assert.Throws<Exception>(() => statementPrinter.Print(invoice));
         }
     }
 }
