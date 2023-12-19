@@ -17,7 +17,7 @@ namespace TheatricalPlayersRefactoringKata
             {
                 var play = perf.Play;
                 var thisAmount = 0;
-                thisAmount = CalculateAmountForPerformance(play, perf);
+                thisAmount = CalculateAmountForPerformance(perf);
                 // add volume credits
                 
                 // add extra credit for every ten comedy attendees
@@ -40,10 +40,10 @@ namespace TheatricalPlayersRefactoringKata
             return result;
         }
 
-        private static int CalculateAmountForPerformance(Play play, Performance perf)
+        private static int CalculateAmountForPerformance(Performance perf)
         {
             int thisAmount;
-            switch (play.Type)
+            switch (perf.Play.Type)
             {
                 case "tragedy":
                     thisAmount = CalculateThisAmountForTragedy(perf);
@@ -52,7 +52,7 @@ namespace TheatricalPlayersRefactoringKata
                     thisAmount = CalculateThisAmountForComedy(perf);
                     break;
                 default:
-                    throw new Exception("unknown type: " + play.Type);
+                    throw new Exception("unknown type: " + perf.Play.Type);
             }
 
             return thisAmount;
