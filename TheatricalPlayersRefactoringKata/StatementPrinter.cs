@@ -29,9 +29,16 @@ namespace TheatricalPlayersRefactoringKata
                         throw new Exception("unknown type: " + play.Type);
                 }
                 // add volume credits
-                volumeCredits += Math.Max(perf.Audience - 30, 0);
+                
                 // add extra credit for every ten comedy attendees
-                if ("comedy" == play.Type) volumeCredits += (int)Math.Floor((decimal)perf.Audience / 5);
+                if ("comedy" == play.Type)
+                {
+                    volumeCredits += CalculateVolumeCreditsIfComedy(perf);
+                }
+                else
+                {
+                    volumeCredits += CalculateVolumeCreditsIfTragedy(perf);
+                }
 
                 // print line for this order
                 result += FormatOrder(cultureInfo, play, thisAmount, perf);
@@ -41,6 +48,17 @@ namespace TheatricalPlayersRefactoringKata
             result += FormatAmountOwed(cultureInfo, totalAmount);
             result += FormatCreditsEarned(volumeCredits);
             return result;
+        }
+
+        private static int CalculateVolumeCreditsIfTragedy(Performance perf)
+        {
+            return Math.Max(perf.Audience - 30, 0);
+        }
+
+        private static int CalculateVolumeCreditsIfComedy(Performance perf)
+        {
+            return Math.Max(perf.Audience - 30, 0) + (int)Math.Floor((decimal)perf.Audience / 5);
+            
         }
 
         private static string FormatCreditsEarned(int volumeCredits)
