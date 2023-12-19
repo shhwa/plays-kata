@@ -20,14 +20,7 @@ namespace TheatricalPlayersRefactoringKata
                 // add volume credits
                 
                 // add extra credit for every ten comedy attendees
-                if ("comedy" == perf.Play.Type)
-                {
-                    volumeCredits += CalculateVolumeCreditsIfComedy(perf);
-                }
-                else
-                {
-                    volumeCredits += CalculateVolumeCreditsIfTragedy(perf);
-                }
+                volumeCredits += CalculateVolumeCreditsForPerformance(perf);
 
                 // print line for this order
                 result += FormatOrder(cultureInfo, thisAmount, perf);
@@ -37,6 +30,18 @@ namespace TheatricalPlayersRefactoringKata
             result += FormatAmountOwed(cultureInfo, totalAmount);
             result += FormatCreditsEarned(volumeCredits);
             return result;
+        }
+
+        private static int CalculateVolumeCreditsForPerformance(Performance perf)
+        {
+            if ("comedy" == perf.Play.Type)
+            {
+                return CalculateVolumeCreditsIfComedy(perf);
+            }
+            else
+            {
+                return CalculateVolumeCreditsIfTragedy(perf);
+            }
         }
 
         private static int CalculateAmountForPerformance(Performance perf)
