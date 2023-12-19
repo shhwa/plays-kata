@@ -38,9 +38,14 @@ namespace TheatricalPlayersRefactoringKata
                 
                 totalAmount += thisAmount;
             }
-            result += String.Format(cultureInfo, "Amount owed is {0:C}\n", Convert.ToDecimal(totalAmount / 100));
+            result += FormatAmountOwed(cultureInfo, totalAmount);
             result += String.Format("You earned {0} credits\n", volumeCredits);
             return result;
+        }
+
+        private static string FormatAmountOwed(CultureInfo cultureInfo, int totalAmount)
+        {
+            return String.Format(cultureInfo, "Amount owed is {0:C}\n", Convert.ToDecimal(totalAmount / 100));
         }
 
         private static string FormatOrder(CultureInfo cultureInfo, Play play, int thisAmount, Performance perf)
