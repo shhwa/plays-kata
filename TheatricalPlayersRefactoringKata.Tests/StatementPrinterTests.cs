@@ -10,13 +10,17 @@ namespace TheatricalPlayersRefactoringKata.Tests
         public void test_statement_example()
         {
             var plays = new Dictionary<string, Play>();
-            plays.Add("hamlet", new Play("Hamlet", "tragedy"));
-            plays.Add("as-like", new Play("As You Like It", "comedy"));
-            plays.Add("othello", new Play("Othello", "tragedy"));
+            var hamlet = new Play("Hamlet", "tragedy");
+            var asyoulikeit = new Play("As You Like It", "comedy");
+            var othello = new Play("Othello", "tragedy");
+            
+            plays.Add("hamlet", hamlet);
+            plays.Add("as-like", asyoulikeit);
+            plays.Add("othello", othello);
 
-            Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance("hamlet", 55),
-                new Performance("as-like", 35),
-                new Performance("othello", 40)});
+            Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance(hamlet, 55),
+                new Performance(asyoulikeit, 35),
+                new Performance(othello, 40)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
             var result = statementPrinter.Print(invoice, plays);
@@ -36,11 +40,14 @@ namespace TheatricalPlayersRefactoringKata.Tests
         public void test_statement_with_new_play_types()
         {
             var plays = new Dictionary<string, Play>();
-            plays.Add("henry-v", new Play("Henry V", "history"));
-            plays.Add("as-like", new Play("As You Like It", "pastoral"));
+            var henryv = new Play("Henry V", "history");
+            var asyoulikeit = new Play("As You Like It", "pastoral");
+            
+            plays.Add("henry-v", henryv);
+            plays.Add("as-like", asyoulikeit);
 
-            Invoice invoice = new Invoice("BigCoII", new List<Performance>{new Performance("henry-v", 53),
-                new Performance("as-like", 55)});
+            Invoice invoice = new Invoice("BigCoII", new List<Performance>{new Performance(henryv, 53),
+                new Performance(asyoulikeit, 55)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
 

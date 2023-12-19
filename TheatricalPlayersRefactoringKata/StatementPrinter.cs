@@ -15,7 +15,7 @@ namespace TheatricalPlayersRefactoringKata
 
             foreach(var perf in invoice.Performances) 
             {
-                var play = plays[perf.PlayID];
+                var play = perf.Play;
                 var thisAmount = 0;
                 switch (play.Type) 
                 {
