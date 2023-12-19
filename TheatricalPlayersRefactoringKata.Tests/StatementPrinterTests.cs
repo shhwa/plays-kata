@@ -22,13 +22,14 @@ namespace TheatricalPlayersRefactoringKata.Tests
             var result = statementPrinter.Print(invoice, plays);
 
             string expectedResult = "Statement for BigCo"
-                                    + "Hamlet: $650.00 (55 seats)"
-                                    + "As You Like It: $580.00 (35 seats)"
-                                    + "Othello: $500.00 (40 seats)"
-                                    + "Amount owed is $1,730.00"
-                                    + "You earned 47 credits";
+                                    + "\n  Hamlet: $650.00 (55 seats)"
+                                    + "\n  As You Like It: $580.00 (35 seats)"
+                                    + "\n  Othello: $500.00 (40 seats)"
+                                    + "\nAmount owed is $1,730.00"
+                                    + "\nYou earned 47 credits"
+                                    + "\n";
 
-            Assert.That(result, Is.EqualTo(result));
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
         
         [Test]
