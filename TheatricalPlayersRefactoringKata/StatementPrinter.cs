@@ -23,11 +23,7 @@ namespace TheatricalPlayersRefactoringKata
                         thisAmount = CalculateThisAmountForTragedy(perf);
                         break;
                     case "comedy":
-                        thisAmount = 30000;
-                        if (perf.Audience > 20) {
-                            thisAmount += 10000 + 500 * (perf.Audience - 20);
-                        }
-                        thisAmount += 300 * perf.Audience;
+                        thisAmount = CalculateThisAmountForComedy(perf);
                         break;
                     default:
                         throw new Exception("unknown type: " + play.Type);
@@ -44,6 +40,19 @@ namespace TheatricalPlayersRefactoringKata
             result += String.Format(cultureInfo, "Amount owed is {0:C}\n", Convert.ToDecimal(totalAmount / 100));
             result += String.Format("You earned {0} credits\n", volumeCredits);
             return result;
+        }
+
+        private static int CalculateThisAmountForComedy(Performance perf)
+        {
+            int thisAmount;
+            thisAmount = 30000;
+            if (perf.Audience > 20)
+            {
+                thisAmount += 10000 + 500 * (perf.Audience - 20);
+            }
+
+            thisAmount += 300 * perf.Audience;
+            return thisAmount;
         }
 
         private static int CalculateThisAmountForTragedy(Performance perf)
