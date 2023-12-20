@@ -32,47 +32,6 @@ namespace TheatricalPlayersRefactoringKata
             return result;
         }
 
-        private static int CalculateVolumeCreditsForPerformance(Performance perf)
-        {
-            if ("comedy" == perf.Play.Type)
-            {
-                return CalculateVolumeCreditsIfComedy(perf);
-            }
-            else
-            {
-                return CalculateVolumeCreditsIfTragedy(perf);
-            }
-        }
-
-        private static int CalculateAmountForPerformance(Performance perf)
-        {
-            int thisAmount;
-            switch (perf.Play.Type)
-            {
-                case "tragedy":
-                    thisAmount = CalculateThisAmountForTragedy(perf);
-                    break;
-                case "comedy":
-                    thisAmount = CalculateThisAmountForComedy(perf);
-                    break;
-                default:
-                    throw new Exception("unknown type: " + perf.Play.Type);
-            }
-
-            return thisAmount;
-        }
-
-        private static int CalculateVolumeCreditsIfTragedy(Performance perf)
-        {
-            return Math.Max(perf.Audience - 30, 0);
-        }
-
-        private static int CalculateVolumeCreditsIfComedy(Performance perf)
-        {
-            return Math.Max(perf.Audience - 30, 0) + (int)Math.Floor((decimal)perf.Audience / 5);
-            
-        }
-
         private static string FormatCreditsEarned(int volumeCredits)
         {
             return String.Format("You earned {0} credits\n", volumeCredits);
@@ -86,31 +45,6 @@ namespace TheatricalPlayersRefactoringKata
         private static string FormatOrder(CultureInfo cultureInfo, int thisAmount, Performance perf)
         {
             return String.Format(cultureInfo, "  {0}: {1:C} ({2} seats)\n", perf.Play.Name, Convert.ToDecimal(thisAmount / 100), perf.Audience);
-        }
-
-        private static int CalculateThisAmountForComedy(Performance perf)
-        {
-            int thisAmount;
-            thisAmount = 30000;
-            if (perf.Audience > 20)
-            {
-                thisAmount += 10000 + 500 * (perf.Audience - 20);
-            }
-
-            thisAmount += 300 * perf.Audience;
-            return thisAmount;
-        }
-
-        private static int CalculateThisAmountForTragedy(Performance perf)
-        {
-            int thisAmount;
-            thisAmount = 40000;
-            if (perf.Audience > 30)
-            {
-                thisAmount += 1000 * (perf.Audience - 30);
-            }
-
-            return thisAmount;
         }
     }
 }
