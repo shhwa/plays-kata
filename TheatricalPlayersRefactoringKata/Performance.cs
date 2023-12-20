@@ -27,9 +27,9 @@ namespace TheatricalPlayersRefactoringKata
         {
             if (Play is Comedy)
             {
-                return CalculateVolumeCreditsIfComedy(this);
+                return Play.CalculateVolumeCreditsIfComedy(this);
             }
-            return CalculateVolumeCreditsIfTragedy(this);
+            return Play.CalculateVolumeCreditsIfTragedy(this);
         }
 
         public int CalculateAmountForPerformance()
@@ -38,10 +38,10 @@ namespace TheatricalPlayersRefactoringKata
             switch (Play)
             {
                 case Tragedy:
-                    thisAmount = CalculateThisAmountForTragedy(this);
+                    thisAmount = Play.CalculateThisAmountForTragedy(this);
                     break;
                 case Comedy:
-                    thisAmount = CalculateThisAmountForComedy(this);
+                    thisAmount = Play.CalculateThisAmountForComedy(this);
                     break;
                 default:
                     throw new Exception("unknown type: " + Play.GetType().Name);
