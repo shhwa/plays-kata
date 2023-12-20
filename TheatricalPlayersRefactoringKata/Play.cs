@@ -3,26 +3,23 @@ namespace TheatricalPlayersRefactoringKata
     public class Play
     {
         private string _name;
-        private string _type;
 
         public string Name { get => _name; set => _name = value; }
-        public string Type { get => _type; set => _type = value; }
 
-        public Play(string name, string type) {
+        public Play(string name) {
             this._name = name;
-            this._type = type;
         }
     }
 
     public class Comedy : Play
     {
-        public Comedy(string name) : base(name, "Comedy")
+        public Comedy(string name) : base(name)
         {
         }
     }
     public class Tragedy : Play
     {
-        public Tragedy(string name) : base(name, "Tragedy")
+        public Tragedy(string name) : base(name)
         {
         }
     }

@@ -44,7 +44,7 @@ namespace TheatricalPlayersRefactoringKata
                     thisAmount = CalculateThisAmountForComedy(this);
                     break;
                 default:
-                    throw new Exception("unknown type: " + Play.Type);
+                    throw new Exception("unknown type: " + Play.GetType().Name);
             }
 
             return thisAmount;

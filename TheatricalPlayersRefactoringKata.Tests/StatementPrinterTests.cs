@@ -30,19 +30,5 @@ namespace TheatricalPlayersRefactoringKata.Tests
 
             Assert.That(result, Is.EqualTo(expectedResult));
         }
-        
-        [Test]
-        public void test_statement_with_new_play_types()
-        {
-            var henryv = new Play("Henry V", "history");
-            var asyoulikeit = new Play("As You Like It", "pastoral");
-            
-            Invoice invoice = new Invoice("BigCoII", new List<Performance>{new Performance(henryv, 53),
-                new Performance(asyoulikeit, 55)});
-            
-            StatementPrinter statementPrinter = new StatementPrinter();
-
-            Assert.Throws<Exception>(() => statementPrinter.Print(invoice));
-        }
     }
 }
