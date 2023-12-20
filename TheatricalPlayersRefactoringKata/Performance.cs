@@ -32,19 +32,19 @@ namespace TheatricalPlayersRefactoringKata
             return CalculateVolumeCreditsIfTragedy(this);
         }
 
-        public static int CalculateAmountForPerformance(Performance perf)
+        public int CalculateAmountForPerformance()
         {
             int thisAmount;
-            switch (perf.Play.Type)
+            switch (Play.Type)
             {
                 case "tragedy":
-                    thisAmount = CalculateThisAmountForTragedy(perf);
+                    thisAmount = CalculateThisAmountForTragedy(this);
                     break;
                 case "comedy":
-                    thisAmount = CalculateThisAmountForComedy(perf);
+                    thisAmount = CalculateThisAmountForComedy(this);
                     break;
                 default:
-                    throw new Exception("unknown type: " + perf.Play.Type);
+                    throw new Exception("unknown type: " + Play.Type);
             }
 
             return thisAmount;

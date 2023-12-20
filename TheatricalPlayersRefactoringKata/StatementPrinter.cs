@@ -16,7 +16,7 @@ namespace TheatricalPlayersRefactoringKata
             foreach(var perf in invoice.Performances) 
             {
                 var thisAmount = 0;
-                thisAmount = Performance.CalculateAmountForPerformance(perf);
+                thisAmount = perf.CalculateAmountForPerformance();
                 // add volume credits
                 
                 // add extra credit for every ten comedy attendees
