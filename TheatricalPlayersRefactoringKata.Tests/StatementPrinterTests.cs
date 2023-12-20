@@ -9,9 +9,9 @@ namespace TheatricalPlayersRefactoringKata.Tests
         [Test]
         public void test_statement_example()
         {
-            var hamlet = new Play("Hamlet", "tragedy");
-            var asyoulikeit = new Play("As You Like It", "comedy");
-            var othello = new Play("Othello", "tragedy");
+            var hamlet = new Tragedy("Hamlet");
+            var asyoulikeit = new Comedy("As You Like It");
+            var othello = new Tragedy("Othello");
             
             Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance(hamlet, 55),
                 new Performance(asyoulikeit, 35),

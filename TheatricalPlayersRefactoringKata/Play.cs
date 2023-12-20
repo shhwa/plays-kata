@@ -13,4 +13,17 @@ namespace TheatricalPlayersRefactoringKata
             this._type = type;
         }
     }
+
+    public class Comedy : Play
+    {
+        public Comedy(string name) : base(name, "Comedy")
+        {
+        }
+    }
+    public class Tragedy : Play
+    {
+        public Tragedy(string name) : base(name, "Tragedy")
+        {
+        }
+    }
 }
