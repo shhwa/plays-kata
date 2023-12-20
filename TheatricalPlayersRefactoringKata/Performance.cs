@@ -25,7 +25,7 @@ namespace TheatricalPlayersRefactoringKata
         
         public int CalculateVolumeCreditsForPerformance()
         {
-            if ("Comedy" == Play.Type)
+            if (Play is Comedy)
             {
                 return CalculateVolumeCreditsIfComedy(this);
             }
@@ -35,12 +35,12 @@ namespace TheatricalPlayersRefactoringKata
         public int CalculateAmountForPerformance()
         {
             int thisAmount;
-            switch (Play.Type)
+            switch (Play)
             {
-                case "Tragedy":
+                case Tragedy:
                     thisAmount = CalculateThisAmountForTragedy(this);
                     break;
-                case "Comedy":
+                case Comedy:
                     thisAmount = CalculateThisAmountForComedy(this);
                     break;
                 default:
