@@ -25,11 +25,7 @@ namespace TheatricalPlayersRefactoringKata
         
         public int CalculateVolumeCreditsForPerformance()
         {
-            if (Play is Comedy)
-            {
-                return Play.CalculateVolumeCreditsIfComedy(this);
-            }
-            return Play.CalculateVolumeCreditsIfTragedy(this);
+            return Play.CalculateVolumeCredits(this);
         }
 
         public int CalculateAmountForPerformance()

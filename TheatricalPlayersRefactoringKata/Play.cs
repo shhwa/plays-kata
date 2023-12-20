@@ -2,7 +2,7 @@ using System;
 
 namespace TheatricalPlayersRefactoringKata
 {
-    public class Play
+    public abstract class Play
     {
         private string _name;
 
@@ -11,6 +11,7 @@ namespace TheatricalPlayersRefactoringKata
         public Play(string name) {
             this._name = name;
         }
+        public abstract int CalculateVolumeCredits(Performance perf);
         
         public static int CalculateVolumeCreditsIfTragedy(Performance perf)
         {
@@ -53,11 +54,21 @@ namespace TheatricalPlayersRefactoringKata
         public Comedy(string name) : base(name)
         {
         }
+
+        public override int CalculateVolumeCredits(Performance perf)
+        {
+            return Math.Max(perf.Audience - 30, 0) + (int)Math.Floor((decimal)perf.Audience / 5);
+        }
     }
     public class Tragedy : Play
     {
         public Tragedy(string name) : base(name)
         {
+        }
+
+        public override int CalculateVolumeCredits(Performance perf)
+        {
+            return Math.Max(perf.Audience - 30, 0);
         }
     }
 }
