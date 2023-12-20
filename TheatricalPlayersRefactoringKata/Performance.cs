@@ -30,20 +30,7 @@ namespace TheatricalPlayersRefactoringKata
 
         public int CalculateAmountForPerformance()
         {
-            int thisAmount;
-            switch (Play)
-            {
-                case Tragedy:
-                    thisAmount = Play.CalculateThisAmountForTragedy(this);
-                    break;
-                case Comedy:
-                    thisAmount = Play.CalculateThisAmountForComedy(this);
-                    break;
-                default:
-                    throw new Exception("unknown type: " + Play.GetType().Name);
-            }
-
-            return thisAmount;
+            return Play.CalculateAmount(this);
         }
     }
 }
