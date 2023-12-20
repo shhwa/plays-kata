@@ -20,7 +20,7 @@ namespace TheatricalPlayersRefactoringKata
                 // add volume credits
                 
                 // add extra credit for every ten comedy attendees
-                volumeCredits += Performance.CalculateVolumeCreditsForPerformance(perf);
+                volumeCredits += perf.CalculateVolumeCreditsForPerformance();
 
                 // print line for this order
                 result += FormatOrder(cultureInfo, thisAmount, perf);

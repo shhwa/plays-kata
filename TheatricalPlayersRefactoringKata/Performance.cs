@@ -23,16 +23,13 @@ namespace TheatricalPlayersRefactoringKata
             this._audience = audience;
         }
         
-        public static int CalculateVolumeCreditsForPerformance(Performance perf)
+        public int CalculateVolumeCreditsForPerformance()
         {
-            if ("comedy" == perf.Play.Type)
+            if ("comedy" == Play.Type)
             {
-                return CalculateVolumeCreditsIfComedy(perf);
+                return CalculateVolumeCreditsIfComedy(this);
             }
-            else
-            {
-                return CalculateVolumeCreditsIfTragedy(perf);
-            }
+            return CalculateVolumeCreditsIfTragedy(this);
         }
 
         public static int CalculateAmountForPerformance(Performance perf)
