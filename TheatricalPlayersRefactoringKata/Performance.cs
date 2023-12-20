@@ -49,42 +49,5 @@ namespace TheatricalPlayersRefactoringKata
 
             return thisAmount;
         }
-
-        private static int CalculateVolumeCreditsIfTragedy(Performance perf)
-        {
-            return Math.Max(perf.Audience - 30, 0);
-        }
-
-        private static int CalculateVolumeCreditsIfComedy(Performance perf)
-        {
-            return Math.Max(perf.Audience - 30, 0) + (int)Math.Floor((decimal)perf.Audience / 5);
-            
-        }
-        
-        private static int CalculateThisAmountForComedy(Performance perf)
-        {
-            int thisAmount;
-            thisAmount = 30000;
-            if (perf.Audience > 20)
-            {
-                thisAmount += 10000 + 500 * (perf.Audience - 20);
-            }
-
-            thisAmount += 300 * perf.Audience;
-            return thisAmount;
-        }
-
-        private static int CalculateThisAmountForTragedy(Performance perf)
-        {
-            int thisAmount;
-            thisAmount = 40000;
-            if (perf.Audience > 30)
-            {
-                thisAmount += 1000 * (perf.Audience - 30);
-            }
-
-            return thisAmount;
-        }
-
     }
 }
